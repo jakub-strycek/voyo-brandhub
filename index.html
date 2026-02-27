@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOYO Brand Bible Hub – CME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f4f4f8;
+    --bg2:       #ffffff;
+    --bg3:       #eeecf7;
+    --border:    rgba(0,0,0,0.07);
+    --border2:   rgba(0,0,0,0.12);
+    --border3:   rgba(0,0,0,0.20);
+    --white:     #0f0d14;
+    --w95:       #1a1625;
+    --w80:       #2e2a40;
+    --w60:       #5a546e;
+    --w35:       #8c87a0;
+    --w15:       rgba(0,0,0,0.06);
+    --w08:       rgba(0,0,0,0.04);
+    --w04:       rgba(0,0,0,0.02);
+    --accent:    #7c3aed;
+    --accent2:   #6d28d9;
+    --accent-hi: #6d28d9;
+    --accent-bg: rgba(124,58,237,0.07);
+    --accent-bd: rgba(124,58,237,0.22);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--w95);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    height: 64px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .logo-sep {
+    width: 1px;
+    height: 18px;
+    background: var(--border2);
+    display: inline-block;
+  }
+
+  .logo-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--w60);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 88px 48px 80px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -180px;
+    right: -120px;
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 62%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-hi);
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent-hi);
+    border-radius: 2px;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -2.5px;
+    color: var(--white);
+    margin-bottom: 22px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-hi);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--w60);
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 5px; }
+
+  .stat-value {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--w35);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO PANEL ── */
+  .hero-panel {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-bd);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .panel-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-hi);
+    margin-bottom: 12px;
+  }
+
+  .panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .panel-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--w60);
+    margin-bottom: 22px;
+  }
+
+  .panel-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 28px;
+  }
+
+  .pillar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--w80);
+  }
+
+  .pillar-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--accent-hi);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-hi);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* ── OVERVIEW BANNER ── */
+  .overview-banner {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 32px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 56px;
+    transition: border-color 0.2s, background 0.2s;
+    animation: fadeUp 0.4s ease 0.05s both;
+  }
+
+  .overview-banner:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+  }
+
+  .overview-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .overview-info { flex: 1; }
+
+  .overview-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+  }
+
+  .overview-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--w60);
+    line-height: 1.6;
+  }
+
+  /* ── CHAPTERS GRID ── */
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+
+  .chapter-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 26px 22px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+
+  .chapter-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+    transform: translateY(-2px);
+  }
+
+  .chapter-number {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 18px;
+    letter-spacing: -2px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--border2);
+  }
+
+  .chapter-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-hi);
+    margin-bottom: 6px;
+    opacity: 0.9;
+  }
+
+  .chapter-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+    color: var(--white);
+  }
+
+  .chapter-desc {
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--w60);
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  /* ── TEMPLATES ── */
+  .templates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 56px;
+  }
+
+  .template-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+
+  .template-card:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+    transform: translateY(-2px);
+  }
+
+  .template-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .template-info { flex: 1; }
+
+  .template-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .template-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--w60);
+    line-height: 1.5;
+  }
+
+  /* ── BRAND QUOTE ── */
+  .brand-quote {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+    padding: 30px 38px;
+  }
+
+  .brand-quote p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--w80);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .brand-quote cite {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--w35);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    transition: background 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn-download:hover {
+    background: var(--accent2);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: var(--w60);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 9px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-ghost:hover {
+    color: var(--w95);
+    border-color: var(--border3);
+    background: var(--w08);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--w35);
+  }
+
+  .footer-note {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--w35);
+    font-style: italic;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .chapter-card:nth-child(1) { animation: fadeUp 0.4s ease 0.05s both; }
+  .chapter-card:nth-child(2) { animation: fadeUp 0.4s ease 0.10s both; }
+  .chapter-card:nth-child(3) { animation: fadeUp 0.4s ease 0.15s both; }
+  .chapter-card:nth-child(4) { animation: fadeUp 0.4s ease 0.20s both; }
+  .chapter-card:nth-child(5) { animation: fadeUp 0.4s ease 0.25s both; }
+  .chapter-card:nth-child(6) { animation: fadeUp 0.4s ease 0.30s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-panel { max-width: 400px; }
+    .chapters-grid { grid-template-columns: repeat(2, 1fr); }
+    .topbar, .hero, .main, footer { padding-left: 24px; padding-right: 24px; }
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 40px; letter-spacing: -1.5px; }
+    .chapters-grid { grid-template-columns: 1fr; }
+    .templates-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+    .overview-banner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="logo-lockup">
+    <div class="logo-mark">V</div>
+    <span class="logo-sep"></span>
+    <span class="logo-text">Brand Bible Hub</span>
+  </div>
+  <a class="btn-ghost" href="BRAND BIBLE.pptx" download>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download Full Bible
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Internal Resource · CEE Markets</p>
+      <h1 class="hero-title">Building VOYO<br><em>consistently</em><br>across markets.</h1>
+      <p class="hero-desc">This hub defines the core principles of the VOYO brand across CEE. Use it to create a consistent VOYO experience — locally close, easy to choose, and always worth watching.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">6</span>
+          <span class="stat-label">Chapters</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">4</span>
+          <span class="stat-label">Pillars</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Templates</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <p class="panel-label">Brand Pillars</p>
+      <div class="panel-title">What VOYO is built on</div>
+      <p class="panel-desc">Every decision, every touchpoint, every market should reflect these four foundations.</p>
+      <div class="panel-pillars">
+        <div class="pillar"><span class="pillar-dot"></span>Local relevance</div>
+        <div class="pillar"><span class="pillar-dot"></span>Ease of choice</div>
+        <div class="pillar"><span class="pillar-dot"></span>Trust</div>
+        <div class="pillar"><span class="pillar-dot"></span>Emotional connection</div>
+      </div>
+      <a class="btn-download" href="BRAND BIBLE.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Brand Bible
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  
+  <span class="section-title">Chapters</span>
+  <div class="chapters-grid">
+
+    <div class="chapter-card">
+      <div class="chapter-number">01</div>
+      <div class="chapter-tag">Strategy</div>
+      <div class="chapter-title">Strategy &amp; North Star</div>
+      <p class="chapter-desc">Defines VOYO's role and strategic direction. Brand foundations, why VOYO matters, brand story, values, and positioning across CEE.</p>
+      <a class="btn-download" href="Chapter 1 - STRATEGY & NORTH STAR.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+    <div class="chapter-card">
+      <div class="chapter-number">02</div>
+      <div class="chapter-tag">Markets</div>
+      <div class="chapter-title">Local Relevance in Practice</div>
+      <p class="chapter-desc">How VOYO builds cultural closeness across markets. Frameworks for making VOYO feel like "our service" — locally fluent, not generically global.</p>
+      <a class="btn-download" href="Chapter 2 - LOCAL RELEVANCE IN PRACTICE.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+    <div class="chapter-card">
+      <div class="chapter-number">03</div>
+      <div class="chapter-tag">Content</div>
+      <div class="chapter-title">One Content Universe</div>
+      <p class="chapter-desc">Clarifies the relationship between TV channels and VOYO. One shared universe, two complementary gateways — never competing, always reinforcing.</p>
+      <a class="btn-download" href="Chapter 3 - ONE CONTENT UNIVERSE.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+    <div class="chapter-card">
+      <div class="chapter-number">04</div>
+      <div class="chapter-tag">CRM &amp; UX</div>
+      <div class="chapter-title">Viewer Experience</div>
+      <p class="chapter-desc">How VOYO fits everyday viewing behaviour. CRM lifecycle principles — continuity over interruption, stories over tactics, trust over pressure.</p>
+      <a class="btn-download" href="Chapter 4 - VIEWER EXPERIENCE.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+    <div class="chapter-card">
+      <div class="chapter-number">05</div>
+      <div class="chapter-tag">Identity</div>
+      <div class="chapter-title">Brand Expression</div>
+      <p class="chapter-desc">Tone of voice, visual identity, and communication guidelines. Friendly, direct, lively — never corporate. Authentic and locally fluent across every touchpoint.</p>
+      <a class="btn-download" href="Chapter 5 - BRAND EXPRESSION.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+    <div class="chapter-card">
+      <div class="chapter-number">06</div>
+      <div class="chapter-tag">Growth</div>
+      <div class="chapter-title">Growth &amp; Partnership</div>
+      <p class="chapter-desc">Principles for scaling VOYO while protecting brand value. Content-led growth, ecosystem amplification, lifecycle habits, and distribution partnerships.</p>
+      <a class="btn-download" href="Chapter 6 - GROWTH &amp; PARTNERSHIP.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download .pptx
+      </a>
+    </div>
+
+  </div>
+
+  <span class="section-title">Templates &amp; Tools</span>
+  <div class="templates-grid">
+
+    <div class="template-card">
+      <div class="template-icon">📧</div>
+      <div class="template-info">
+        <div class="template-name">CRM Template</div>
+        <p class="template-sub">Ready-to-use lifecycle communication templates aligned with VOYO's viewer experience principles.</p>
+      </div>
+      <a class="btn-ghost" href="Voyo CRM Template.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+
+    <div class="template-card">
+      <div class="template-icon">📱</div>
+      <div class="template-info">
+        <div class="template-name">Social Media Template</div>
+        <p class="template-sub">On-brand social assets and format guidelines for consistent presence across all market channels.</p>
+      </div>
+      <a class="btn-ghost" href="Voyo Social media Template.pptx" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+
+  </div>
+
+  <div class="brand-quote">
+    <p>"Before you approve anything, ask: Does this strengthen trust? Does this feel locally close and culturally fluent? Does this make choosing and watching easier? Does this bring stories people care about?"</p>
+    <cite>The VOYO Brand Test · Building VOYO Consistently Across Markets</cite>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-mark" style="width:28px;height:28px;font-size:13px;border-radius:6px;color:#ffffff;">V</div>
+    VOYO Brand Bible Hub
+  </div>
+  <span class="footer-note">Born in CEE. Built with its audience. Always worth watching.</span>
+</footer>
+
+</body>
+</html>
